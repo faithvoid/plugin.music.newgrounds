@@ -18,7 +18,8 @@ Requires the latest version of XBMC (3.6-DEV-r33046 or later) from Xbins (as it 
 - You tell me.
 
 ## TODO:
+- Implement "Download Track" feature.
 - Implement pagination.
 - Get rid of dialog box that appears before every track.
-- Implement better filename sanitization
+- Implement better filename sanitization.
 - Incorporate update script.
