@@ -140,20 +140,47 @@ def play_audio(url):
 
 def main_menu():
     """Show the main menu with Featured and Search options."""
-    # Add Featured button
-    list_item = xbmcgui.ListItem(label="Featured")
-    url = "{0}?action=featured".format(sys.argv[0])
+
+    list_item = xbmcgui.ListItem(label="Music - Featured")
+    url = "{0}?action=music-featured".format(sys.argv[0])
     xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=list_item, isFolder=True)
 
-    list_item = xbmcgui.ListItem(label="Latest")
-    url = "{0}?action=latest".format(sys.argv[0])
+    list_item = xbmcgui.ListItem(label="Music - Latest")
+    url = "{0}?action=music-latest".format(sys.argv[0])
     xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=list_item, isFolder=True)
 
-    list_item = xbmcgui.ListItem(label="Popular")
-    url = "{0}?action=popular".format(sys.argv[0])
+    list_item = xbmcgui.ListItem(label="Music - Popular")
+    url = "{0}?action=music-popular".format(sys.argv[0])
     xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=list_item, isFolder=True)
 
-    # Add Search button
+    list_item = xbmcgui.ListItem(label="Voice - Featured")
+    url = "{0}?action=voice-featured".format(sys.argv[0])
+    xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=list_item, isFolder=True)
+
+    list_item = xbmcgui.ListItem(label="Voice - Latest")
+    url = "{0}?action=voice-latest".format(sys.argv[0])
+    xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=list_item, isFolder=True)
+
+    list_item = xbmcgui.ListItem(label="Voice - Popular")
+    url = "{0}?action=voice-popular".format(sys.argv[0])
+    xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=list_item, isFolder=True)
+
+    list_item = xbmcgui.ListItem(label="Podcasts - Featured")
+    url = "{0}?action=podcasts-featured".format(sys.argv[0])
+    xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=list_item, isFolder=True)
+
+    list_item = xbmcgui.ListItem(label="Podcasts - Latest")
+    url = "{0}?action=podcasts-latest".format(sys.argv[0])
+    xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=list_item, isFolder=True)
+
+    list_item = xbmcgui.ListItem(label="Podcasts - Popular")
+    url = "{0}?action=podcasts-popular".format(sys.argv[0])
+    xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=list_item, isFolder=True)
+
+    list_item = xbmcgui.ListItem(label="Radio")
+    url = "{0}?action=radio".format(sys.argv[0])
+    xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=list_item, isFolder=True)
+
     list_item = xbmcgui.ListItem(label="Search")
     url = "{0}?action=search".format(sys.argv[0])
     xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=list_item, isFolder=True)
@@ -181,12 +208,26 @@ params = urlparse.parse_qs(parsed_url.query)
 
 if 'action' in params:
     action = params['action'][0]
-    if action == 'featured':
-        list_tracks("https://www.newgrounds.com/audio/featured")
-    if action == 'latest':
-        list_tracks("https://www.newgrounds.com/audio/browse")
-    if action == 'popular':
-        list_tracks("https://www.newgrounds.com/audio/popular")
+    if action == 'music-featured':
+        list_tracks("https://www.newgrounds.com/audio/featured?type=1")
+    if action == 'music-latest':
+        list_tracks("https://www.newgrounds.com/audio/browse?type=1")
+    if action == 'music-popular':
+        list_tracks("https://www.newgrounds.com/audio/popular?type=1")
+    if action == 'voice-featured':
+        list_tracks("https://www.newgrounds.com/audio/featured?type=3")
+    if action == 'voice-latest':
+        list_tracks("https://www.newgrounds.com/audio/browse?type=3")
+    if action == 'voice-popular':
+        list_tracks("https://www.newgrounds.com/audio/popular?type=3")
+    if action == 'podcasts-featured':
+        list_tracks("https://www.newgrounds.com/audio/featured?type=4")
+    if action == 'podcasts-latest':
+        list_tracks("https://www.newgrounds.com/audio/browse?type=4")
+    if action == 'podcasts-popular':
+        list_tracks("https://www.newgrounds.com/audio/popular?type=4")
+    if action == 'radio':
+        list_tracks("https://www.newgrounds.com/radio")
     elif action == 'search':
         search_tracks()
 elif 'url' in params:
