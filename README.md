@@ -12,7 +12,7 @@ Requires the latest version of XBMC (3.6-DEV-r33046 or later) from Xbins (as it 
 
 
 ## How To Use:
-- Download latest release file, or "release" folder from the repository (delete update.zip if you do!).
+- Download latest release file.
 - Extract the .zip file.
 - Copy the "Newgrounds" folder to Q:/plugins/music
 - Run the add-on and enjoy!
@@ -24,3 +24,4 @@ Requires the latest version of XBMC (3.6-DEV-r33046 or later) from Xbins (as it 
 ## TODO:
 - Implement better filename sanitization.
 - Incorporate update script(?)
+- Clean up code.
