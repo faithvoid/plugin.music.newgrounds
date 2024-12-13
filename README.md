@@ -21,6 +21,7 @@ Requires the latest version of XBMC (3.6-DEV-r33046 or later) from Xbins (as it 
 ## Issues:
 - Thumbnails are currently broken as Newgrounds uses .webp, which XBMC doesn't support.
 - If you get an error while saving a download, you either don't have an F:/ partition (if this is the case, open default.py in a text editor and change "F:/" to "E:/"), or the filename is breaking something FATX related. If that's not the case, please open an issue!
+- Featured/Latest/Popular sections don't support pages. Unlike with searches, these sections don't present a page query value in the HTML to use, and I have no idea how to implement Next/Previous on pages that rely on autoscroll to present more information.
 - You tell me.
 
 ## TODO:
