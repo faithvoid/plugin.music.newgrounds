@@ -1,4 +1,4 @@
-# plugin.music.newgrounds
+# Newgrounds Audio
 Basic Newgrounds Audio Portal client for XBMC.
 
 [](/release/default.tbn)
