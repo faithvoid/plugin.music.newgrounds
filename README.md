@@ -22,6 +22,5 @@ Requires the latest version of XBMC (3.6-DEV-r33046 or later) from Xbins (as it 
 - You tell me.
 
 ## TODO:
-- Implement pagination.
 - Implement better filename sanitization.
-- Incorporate update script.
+- Incorporate update script(?)
