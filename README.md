@@ -22,6 +22,7 @@ Requires the latest version of XBMC (3.6-DEV-r33046 or later) from Xbins (as it 
 - You tell me.
 
 ## TODO:
+- List "Music", "Voice", and "Podcasts" as their own categories containing Featured / Latest / Popular, instead of all at once.
 - Implement better filename sanitization.
 - Incorporate update script(?)
 - Clean up code.
