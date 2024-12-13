@@ -5,9 +5,10 @@ Basic Newgrounds Audio Portal client for XBMC.
 
 Requires the latest version of XBMC (3.6-DEV-r33046 or later) from Xbins (as it has crucial TLS/SSL updates that allow this script to work).
 
-[1](/screenshots/1.png)
-[2](/screenshots/2.png)
-[3](/screenshots/3.png)
+[](https://raw.githubusercontent.com/faithvoid/plugin.music.newgrounds/refs/heads/main/screenshots/1.png)
+[](https://raw.githubusercontent.com/faithvoid/plugin.music.newgrounds/refs/heads/main/screenshots/2.png)
+[](https://raw.githubusercontent.com/faithvoid/plugin.music.newgrounds/refs/heads/main/screenshots/3.png)
+
 
 ## How To Use:
 - Download latest release file, or "release" folder from the repository (delete update.zip if you do!).
