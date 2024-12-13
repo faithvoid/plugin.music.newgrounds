@@ -16,9 +16,11 @@ Requires the latest version of XBMC (3.6-DEV-r33046 or later) from Xbins (as it 
 - Extract the .zip file.
 - Copy the "Newgrounds" folder to Q:/plugins/music
 - Run the add-on and enjoy!
+- To download tracks, open up the context menu and select "Download Track".
 
 ## Issues:
 - Thumbnails are currently broken as Newgrounds uses .webp, which XBMC doesn't support.
+- If you get an error while saving a download, you either don't have an F:/ partition or the filename is breaking something FATX related. If that's not the case, please open an issue!
 - You tell me.
 
 ## TODO:
