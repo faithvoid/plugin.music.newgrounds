@@ -17,12 +17,9 @@ Requires the latest version of XBMC (3.6-DEV-r33046 or later) from Xbins (as it 
 
 ## Issues:
 - Thumbnails are currently broken as Newgrounds uses .webp, which XBMC doesn't support.
-- HTML sometimes shows up in search strings. Need to sanitize artist names and titles a bit better.
 - You tell me.
 
 ## TODO:
-- Implement "Download Track" feature.
 - Implement pagination.
-- Get rid of dialog box that appears before every track.
 - Implement better filename sanitization.
 - Incorporate update script.
