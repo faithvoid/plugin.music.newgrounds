@@ -3,7 +3,7 @@ Basic Newgrounds Audio Portal client for XBMC.
 
 [](/release/default.tbn)
 
-Requires the latest version of XBMC (3.6-DEV-r33046 or later) from Xbins (as it has crucial TLS/SSL updates that allow this script to work). Sources are NOT provided (outside of one public domain movie source) and must be input manually!
+Requires the latest version of XBMC (3.6-DEV-r33046 or later) from Xbins (as it has crucial TLS/SSL updates that allow this script to work).
 
 [1](/screenshots/1.png)
 [2](/screenshots/2.png)
