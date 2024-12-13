@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 import sys
 import xbmc
@@ -212,25 +213,23 @@ def download_track(url):
     except Exception as e:
         xbmcgui.Dialog().ok("Failure!", "An error occurred: " + str(e))
 
-def list_tracks(url):
-    """List tracks from a given URL with thumbnails and context menu options."""
+def list_tracks(url, search_term=None, page_number=1):
+    """List tracks from a given URL with pagination support."""
     tracks = fetch_tracks(url)
     if not tracks:
         return
 
+    # Display fetched tracks
     for track in tracks:
         list_item = xbmcgui.ListItem(label=track["title"])
         list_item.setInfo('music', {'title': track["track_title"], 'artist': track["artist"]})
 
-        # Set the thumbnail if available (compatible with older Kodi versions)
         if track["thumbnail"]:
             list_item.setThumbnailImage(track["thumbnail"])
 
-        # Format the URL to pass the track URL
         query = urllib.urlencode({'url': track['url']})
         url_with_query = "{0}?{1}".format(sys.argv[0], query)
 
-        # Add context menu items
         context_menu = [
             ('Download Track', 'RunPlugin({0}?action=download&url={1})'.format(sys.argv[0], urllib.quote(track["url"])))
         ]
@@ -238,7 +237,29 @@ def list_tracks(url):
 
         xbmcplugin.addDirectoryItem(handle=addon_handle, url=url_with_query, listitem=list_item, isFolder=False)
 
+    # Add pagination controls
+    if search_term:
+        if page_number > 1:
+            prev_page_url = "{0}?action=search&terms={1}&sort=relevance&page={2}".format(
+                sys.argv[0], urllib.quote(search_term), page_number - 1)
+            xbmcplugin.addDirectoryItem(
+                handle=addon_handle,
+                url=prev_page_url,
+                listitem=xbmcgui.ListItem(label="<< Previous Page"),
+                isFolder=True
+            )
+
+        next_page_url = "{0}?action=search&terms={1}&sort=relevance&page={2}".format(
+            sys.argv[0], urllib.quote(search_term), page_number + 1)
+        xbmcplugin.addDirectoryItem(
+            handle=addon_handle,
+            url=next_page_url,
+            listitem=xbmcgui.ListItem(label="Next Page >>"),
+            isFolder=True
+        )
+
     xbmcplugin.endOfDirectory(addon_handle)
+
 
 def fetch_audio_url(track_page_url):
     """Fetch the audio URL for a given track page."""
@@ -374,7 +395,7 @@ def main_menu():
     xbmcplugin.endOfDirectory(addon_handle)
 
 def search_tracks():
-    """Prompt the user for a search term and list the results."""
+    """Prompt the user for a search term and list the results with pagination."""
     keyboard = xbmc.Keyboard('', 'Enter search term')
     keyboard.doModal()
 
@@ -383,8 +404,11 @@ def search_tracks():
         if not search_term:
             xbmcgui.Dialog().ok(ADDON_NAME, "Search cancelled.", "No search term entered.")
             return
-        search_url = "https://www.newgrounds.com/search/conduct/audio?suitabilities=etm&c=3&terms=" + urllib.quote(search_term)
-        list_tracks(search_url)
+
+        # Start search at page 1 with correct URL format
+        search_url = "https://www.newgrounds.com/search/conduct/audio?terms={}&sort=relevance&page=1".format(
+            urllib.quote(search_term))
+        list_tracks(search_url, search_term, 1)
     else:
         xbmcgui.Dialog().ok(ADDON_NAME, "Search cancelled.")
 
@@ -419,7 +443,14 @@ if 'action' in params:
     elif action == 'podcasts-popular':
         list_tracks("https://www.newgrounds.com/audio/popular?type=4")
     elif action == 'search':
-        search_tracks()
+        search_term = params.get('terms', [''])[0]
+        page_number = int(params.get('page', [1])[0])  # Default to page 1 if not provided
+        if search_term:
+            search_url = "https://www.newgrounds.com/search/conduct/audio?terms={}&sort=relevance&page={}".format(
+                urllib.quote(search_term), page_number)
+            list_tracks(search_url, search_term, page_number)
+        else:
+            search_tracks()
     else:
         main_menu()
 elif 'url' in params:
