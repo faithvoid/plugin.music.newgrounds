@@ -1,7 +1,7 @@
 # Newgrounds Audio
 Basic Newgrounds Audio Portal client for XBMC.
 
-[](/release/default.tbn)
+![](/release/default.tbn)
 
 Requires the latest version of XBMC (3.6-DEV-r33046 or later) from Xbins (as it has crucial TLS/SSL updates that allow this script to work).
 
